@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+{% block main %}
+    <h1>Tadaa!</h1>
+
+    <table class="table table-bordered table-hover width-var" align="center">
+        <thead style="text-align:center vertical-align:middle">
+            <tr>
+                <td colspan="2">Here Are the Attributes of Your Ideal Dog</td>
+            </tr>
+        </thead>
+        <tbody style="vertical-align:middle">
+            <tr>
+                <th>Apartment Adaptability</th>
+                <td>{{ apt_ready }}</td>
+            </tr>
+            <tr>
+                <th>Kid Friendliness</th>
+                <td>{{ kid_friendly }}</td>
+            </tr>
+            <tr>
+                <th>Drooling</th>
+                <td>{{ drooling }}</td>
+            </tr>
+            <tr>
+                <th>Shedding</th>
+                <td>{{ shedding }}</td>
+            </tr>
+            <tr>
+                <th>Maintenance</th>
+                <td>{{ maintenance }}</td>
+            </tr>
+            <tr>
+                <th>Trainability</th>
+                <td>{{ trainability }}</td>
+            </tr>
+            <tr>
+                <th>Activity Needs</th>
+                <td>{{ activity }}</td>
+            </tr>
+            <tr>
+                <th>Hypoallergenic</th>
+                <td>{{ hypo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>LISTS OF POTENTIAL BREEDS</h3>
+    <section class="container-fluid justified width-var">Below are two lists of dog breeds - the primary list more closely matches your personality and the secondary
+        list expands slightly to give you a few more options (the primary list may be empty, but no need to fret). These lists are only to give you a starting point - they are
+        based on generalizations of breeds and it is imperative to remember that there will be a variety of personalities within a litter, let alone across an entire breed.
+        Additionally, there are several mixed breed dogs that may fit your lifestyle as well. Whichever way you choose, ensure that you have adequate time to get to know
+        the dog in person before making any final decisions.
+    </section>
+    <br>
+    <section class="container-fluid text-center width-var">
+        <form action="https://www.akc.org/dog-breeds/" target="_blank">
+            <h5>PRIMARY</h5>
+            <select name="breed" id="breed">
+                {% for primary_breed in primary_breeds %}
+                    <option value="{{ primary_breed['name'] }}">{{ primary_breed["name"] }}</option>
+                {% endfor %}
+            </select><br>
+            <button type="submit" style="margin:10px">Learn More</button>
+        </form>
+    </section>
+    <section class="container-fluid text-center width-var">
+        <form action="https://www.akc.org/dog-breeds/" target="_blank">
+            <h5>SECONDARY</h5>
+            <select name="breed" id="breed">
+                {% for secondary_breed in secondary_breeds %}
+                    <option value="{{ secondary_breed['name'] }}">{{ secondary_breed["name"] }}</option>
+                {% endfor %}
+            </select><br>
+            <button type="submit" style="margin:10px">Learn More</button>
+        </form>
+    </section>
+
+{% endblock %}
